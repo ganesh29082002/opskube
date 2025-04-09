@@ -1,0 +1,481 @@
+{
+	"info": {
+		"_postman_id": "0b8d5ae1-3b92-46f7-ab1c-b7dff1097fc8",
+		"name": "opskubes",
+		"description": "URL :\n\n[https://reunion-backend-qvq4.onrender.comEndFragment](https://reunion-backend-qvq4.onrender.comEndFragment)\n\nnote :- as i deployed backend on free instance , first request takes time to give response",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32385786",
+		"_collection_link": "https://martian-trinity-753598.postman.co/workspace/Reunion~97cd4423-ccbc-4663-adb0-e74fdfbe1344/collection/32385786-0b8d5ae1-3b92-46f7-ab1c-b7dff1097fc8?action=share&source=collection_link&creator=32385786"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Ganesh\",\r\n  \"lastName\": \"Golhar\",\r\n  \"email\": \"ganesh.golhar35@gmail.com\",\r\n  \"password\": \"password\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/v1/register",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"ganesh.golhar35@gmail.com\",\r\n  \"password\": \"password\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/v1/login",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task Managment",
+			"item": [
+				{
+					"name": "createEvent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhbmVzaC5nb2xoYXIzNUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInVzZXJJZCI6IjY3ZjQwZWE5YjRkYWFhZjI4MjI1NmZiNCIsImlhdCI6MTc0NDA0NzgyMSwiZXhwIjoxNzQ0MDY1ODIxfQ.GmrheGD7fgr8tZt7Eq7HwoUMO1Q84M4n2IzXhfNmKSU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Developer Conference 1\",\r\n  \"description\": \"Annual full-stack dev event\",\r\n  \"location\": \"New York\",\r\n  \"date\": \"2025-04-10T09:00:00Z\",\r\n  \"priority\": 3,\r\n  \"status\": \"pending\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/v1/event",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTask",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Complete Study\",\r\n  \"startTime\": \"2024-03-05T14:00:00Z\",\r\n  \"endTime\": \"2024-03-05T15:00:00Z\",\r\n  \"priority\": 2,\r\n  \"status\": \"pending\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/v1/event/67f4182081fff2c0e81870a0",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"event",
+								"67f4182081fff2c0e81870a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSelectedTask",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhbmVzaC5nb2xoYXIzNUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInVzZXJJZCI6IjY3Yzg3ZmU3OTYwZGZlYmIzMDFkYmY1YSIsImlhdCI6MTc0MTE5OTYyMSwiZXhwIjoxNzQxMjE3NjIxfQ.hscsoxoXP48FJV4M8lL-RWM8bWofv3Ua-vNbPmjpWic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"taskIds\": [\"67c8b4c5b4a65284c4a3ee51\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{staging}}/api/v1/task",
+							"host": [
+								"{{staging}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Developer Conference 1\",\r\n  \"description\": \"Annual full-stack dev event\",\r\n  \"location\": \"New York update\"\r\n  }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/v1/event/67f411e706fe8dd1bc4c00ae",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"event",
+								"67f411e706fe8dd1bc4c00ae"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/v1/events?sortBy=startTime&order=asc&page=1&limit=10",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "startTime"
+								},
+								{
+									"key": "order",
+									"value": "asc"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/v1/all-events",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"all-events"
+							],
+							"query": [
+								{
+									"key": "priority",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "2025-03-05T10:00:00.000Z",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "statistics",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhbmVzaC5nb2xoYXIzNUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInVzZXJJZCI6IjY3Yzg3ZmU3OTYwZGZlYmIzMDFkYmY1YSIsImlhdCI6MTc0MTE5OTc2MSwiZXhwIjoxNzQxMjE3NzYxfQ.kJM6VagkisuWrRhYOxeNcWxbIyY_kd-ul92LlC0vzmw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{staging}}/api/v1/task/statistics",
+							"host": [
+								"{{staging}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"task",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RSVP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userResponse\": \"yes\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/v1/rsvp/67f54e7f59d01892999e50f1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rsvp",
+								"67f54e7f59d01892999e50f1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RSVP user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userResponse\": \"yes\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/v1/user/rsvp",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"rsvp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		},
+		{
+			"key": "staging",
+			"value": "https://reunion-backend-qvq4.onrender.com",
+			"type": "default"
+		},
+		{
+			"key": "local",
+			"value": "http://localhost:5080",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhbmVzaC5nb2xoYXIzNUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInVzZXJJZCI6IjY3ZjQwZWE5YjRkYWFhZjI4MjI1NmZiNCIsImlhdCI6MTc0NDA0OTI4NSwiZXhwIjoxNzQ0MDY3Mjg1fQ.x3I97l_7SQFxV7i21JnfJLZFMzQOUDhxzps6qoh5LLs",
+			"type": "default"
+		}
+	]
+}
