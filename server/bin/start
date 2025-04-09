@@ -1,0 +1,18 @@
+
+'use strict';
+
+require('@babel/register');
+require('@babel/polyfill');
+require('dotenv').config();
+const app = require('../index')
+const {config} = require('../config/config')
+
+const NODE_ENV = process.env.NODE_ENV || 'local'
+const configuration = config[NODE_ENV]
+console.log(configuration)
+
+const PORT =configuration.apiPort
+
+app.listen(PORT,()=>{
+    console.log(`server is listening on ${PORT}` )
+})
